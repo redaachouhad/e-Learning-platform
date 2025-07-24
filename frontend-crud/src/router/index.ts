@@ -38,12 +38,7 @@ const router = createRouter({
       component: UserSettings,
       meta: { requiresAuth: true },
     },
-    // {
-    //   path: "/userProfile",
-    //   name: "userProfile",
-    //   component: UserProfile,
-    //   meta: { requiresAuth: true },
-    // },
+
     {
       path: "/course/:id",
       name: "course",
@@ -91,6 +86,7 @@ const router = createRouter({
 // Global Navigation Guard
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
+
   const authorizedUrl = [
     "/verify-mail",
     "/login",
@@ -99,11 +95,15 @@ router.beforeEach(async (to, from, next) => {
     "/password-reset/:token",
     "/forgot-password",
   ];
-  // Only fetch if required and user not yet authenticated
+
+  console.log(authStore.isAuthenticated);
+  // Fetch user if required
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    console.log("hhhh");
     await authStore.fetchUser();
   }
 
+  // Redirect to verify email
   if (
     !authStore.user?.email_verified_at &&
     !authorizedUrl.includes(to.path) &&
@@ -113,9 +113,19 @@ router.beforeEach(async (to, from, next) => {
     return next("/verify-mail");
   }
 
-  // After fetch attempt, still unauthenticated? Redirect
+  // Redirect to login if not authenticated
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     return next("/login");
+  }
+
+  console.log(authStore.isAuthenticated);
+  // ❗ Redirect authenticated users away from /login or /register
+  if (
+    authStore.isAuthenticated &&
+    (to.path === "/register" || to.path === "/login")
+  ) {
+    console.log("reda");
+    return next("/");
   }
 
   return next();

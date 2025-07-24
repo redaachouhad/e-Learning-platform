@@ -2,12 +2,36 @@
 
 A modern web-based e-learning platform built with **Laravel** and **Vue.js**, designed to simplify online learning and course management for students and instructors.
 
+## Diagram entities/associations
+
+![Screenshot - Homepage](./screenshots/diagram.png)
+
+## Login Page
+
 ![Screenshot - Homepage](./screenshots/login-page.png)
+
+## Register Page
+
 ![Screenshot - Course Page](./screenshots/register-page.png)
+
+## Courses Pages
+
 ![Screenshot - Course Page](./screenshots/courses-page.png)
+
+## Course Details Page
+
 ![Screenshot - Course Page](./screenshots/course-details-page.png)
+
+## Profile User Page
+
 ![Screenshot - Course Page](./screenshots/profile-user-page.png)
+
+## Trainer / Creator page
+
 ![Screenshot - Course Page](./screenshots/trainer-page.png)
+
+## Create Course Page
+
 ![Screenshot - Course Page](./screenshots/create-course-page.png)
 
 ---

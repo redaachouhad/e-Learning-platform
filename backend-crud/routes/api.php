@@ -40,5 +40,8 @@ Route::middleware(['auth:sanctum'])->group(
 
         // get all course using filters and pagination
         Route::post("/getCourseUsingFilters", [CourseController::class, 'getCourseUsingFilters']);
+
+        // delete user
+        Route::delete("/deleteUserAccount", [UserController::class, 'deleteUserAccount']);
     }
 );

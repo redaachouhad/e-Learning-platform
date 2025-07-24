@@ -52,4 +52,19 @@ class UserController extends Controller
             'followers_count' => $creator->followers_count
         ], 200);
     }
+
+    /**
+     * Deleting User Account
+     */
+
+    public function deleteUserAccount($id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return response()->json([
+            'message' => 'user deleted successfully'
+        ], 200);
+    }
 }

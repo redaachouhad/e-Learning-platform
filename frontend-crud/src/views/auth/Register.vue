@@ -82,6 +82,8 @@ const register = async (data: RegisterForm) => {
   }
   loadingRegister.value = false;
 };
+
+const showNext = ref<boolean>(false);
 </script>
 
 <template>
@@ -208,15 +210,32 @@ const register = async (data: RegisterForm) => {
           </ul>
         </div>
 
-        <button
-          type="submit"
-          class="cursor-pointer flex flex-row items-center justify-center gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          <template v-if="loadingRegister">
-            <IconSpinner size="w-6 h-6" />
-          </template>
-          <p>Register</p>
-        </button>
+        <div class="flex gap-2">
+          <button
+            type="button"
+            @click="
+              () => {
+                console.log('reda');
+              }
+            "
+            class="cursor-pointer flex flex-row items-center justify-center gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <template v-if="loadingRegister">
+              <IconSpinner size="w-6 h-6" />
+            </template>
+            <p>Next -></p>
+          </button>
+
+          <button
+            type="submit"
+            class="cursor-pointer flex flex-row items-center justify-center gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <template v-if="loadingRegister">
+              <IconSpinner size="w-6 h-6" />
+            </template>
+            <p>Register</p>
+          </button>
+        </div>
       </form>
     </div>
   </CardAuthLayout>
